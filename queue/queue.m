@@ -28,6 +28,20 @@
 
 -(void) push: (NSInteger *)num
 {
+    if (!self.head) {
+        self.head = [[node alloc]initWith:num];
+        self.tail = self.head;
+        self.tail.next = nil;
+        
+    }
+    else
+    {
+
+        node *current = self.tail;
+        current.next  = [[node alloc]initWith:num];
+        self.tail = current.next;
+        self.tail.next = nil;
+    }
     
 }
 
@@ -36,6 +50,7 @@
     if (self.head) {
      
         node *headValue = self.head;
+        self.head = self.head.next;
         
         return headValue.num;
     }
